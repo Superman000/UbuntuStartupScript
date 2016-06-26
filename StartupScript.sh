@@ -8,7 +8,7 @@ sudo apt-get install google-chrome-stable
 
 echo "create and configure a shared folder"
 sudo apt-get install samba
-sudo smbpasswd -a whoami
+sudo smbpasswd -a $(whoami)
 mkdir /home/$(whoami)/Documents/SharedFolder
 echo "[SharedFolder]
      path = /home/$(whoami)/Documents/SharedFolder
