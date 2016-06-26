@@ -78,8 +78,10 @@ transmission-gtk &
 PID=$!
 sleep 5
 kill $PID
+echo "deb http://archive.ubuntu.com/ubuntu/ vivid main universe" | sudo tee -a /etc/apt/sources.list
+sudo apt-get update
 sudo apt-get install jq
-cat /home/$(id -nu)/.config/transmission/settings.json | jq '.["download-dir"]="/home/$(id -nu)/Documents/SharedFolder"' > /home/$(id -nu)/.config/transmission/settings_copy.json
+cat /home/$(id -nu)/.config/transmission/settings.json | jq '.["download-dir"]="/home/'$(id -nu)'/Documents/SharedFolder"' > /home/$(id -nu)/.config/transmission/settings_copy.json
 rm /home/$(id -nu)/.config/transmission/settings.json
 mv /home/$(id -nu)/.config/transmission/settings_copy.json /home/$(id -nu)/.config/transmission/settings.json 
 
