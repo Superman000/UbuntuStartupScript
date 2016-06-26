@@ -10,6 +10,11 @@ sudo apt-get purge firefox
 echo "install vlc"
 sudo apt-get install vlc
 
+echo "install notepadqq"
+sudo add-apt-repository ppa:notepadqq-team/notepadqq
+sudo apt-get update
+sudo apt-get install notepadqq
+
 echo "create and configure a shared folder"
 sudo apt-get install samba
 sudo smbpasswd -a $(id -nu)
