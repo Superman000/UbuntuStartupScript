@@ -8,12 +8,12 @@ sudo apt-get install google-chrome-stable
 
 echo "create and configure a shared folder"
 sudo apt-get install samba
-sudo smbpasswd -a ruan
-mkdir /home/ruan/Documents/SharedFolder
+sudo smbpasswd -a whoami
+mkdir /home/$(whoami)/Documents/SharedFolder
 echo "[SharedFolder]
-     path = /home/ruan/Documents/SharedFolder
+     path = /home/$(whoami)/Documents/SharedFolder
      available = yes
-     valid_users = ruan
+     valid_users = $(whoami)
      read only = no
      browsable = yes
      public = yes
@@ -67,9 +67,9 @@ transmission-gtk &
 PID=$!
 sleep 5
 kill $PID
-cat /home/ruan/.config/transmission/settings.json | jq '.["watch-dir"]="/home/ruan/Documents/SharedFolder"' > /home/ruan/.config/transmission/settings_copy.json
-rm /home/ruan/.config/transmission/settings.json
-mv /home/ruan/.config/transmission/settings_copy.json /home/ruan/.config/transmission/settings.json 
+cat /home/$(whoami)/.config/transmission/settings.json | jq '.["watch-dir"]="/home/$(whoami)/Documents/SharedFolder"' > /home/$(whoami)/.config/transmission/settings_copy.json
+rm /home/$(whoami)/.config/transmission/settings.json
+mv /home/$(whoami)/.config/transmission/settings_copy.json /home/$(whoami)/.config/transmission/settings.json 
 
 echo "install R and Rstudio"
 echo "deb http://cran.mirror.ac.za/bin/linux/ubuntu trusty/" | sudo tee -a /etc/apt/sources.list
