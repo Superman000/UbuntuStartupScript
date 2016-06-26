@@ -54,7 +54,6 @@ WantedBy=multi-user.target" | sudo tee -a /lib/systemd/system/serviio.service
 sudo systemctl daemon-reload
 sudo systemctl enable serviio
 sudo systemctl start serviio
-/opt/serviio/bin/serviio-console.sh 
 
 echo "install teamviewer"
 sudo wget https://download.teamviewer.com/download/teamviewer_i386.deb
@@ -82,3 +81,5 @@ wget https://download1.rstudio.org/rstudio-0.99.902-amd64.deb
 sudo dpkg -i *.deb
 sudo apt-get -f install
 rm *.deb 
+
+/opt/serviio/bin/serviio-console.sh 
