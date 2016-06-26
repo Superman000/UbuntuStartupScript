@@ -7,6 +7,9 @@ sudo apt-get update
 sudo apt-get install google-chrome-stable 
 sudo apt-get purge firefox
 
+echo "install vlc"
+sudo apt-get install vlc
+
 echo "create and configure a shared folder"
 sudo apt-get install samba
 sudo smbpasswd -a $(id -nu)
