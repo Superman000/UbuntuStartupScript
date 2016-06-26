@@ -59,7 +59,7 @@ echo "install teamviewer"
 sudo wget https://download.teamviewer.com/download/teamviewer_i386.deb
 sudo dpkg -i *.deb
 sudo apt-get -f install
-rm *.deb 
+sudo rm *.deb 
 
 echo "install R and Rstudio"
 echo "deb http://cran.mirror.ac.za/bin/linux/ubuntu trusty/" | sudo tee -a /etc/apt/sources.list
