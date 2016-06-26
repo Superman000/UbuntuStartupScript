@@ -61,16 +61,6 @@ sudo dpkg -i *.deb
 sudo apt-get -f install
 rm *.deb 
 
-echo "update transmission torrent client download path"
-transmission-gtk &
-PID=$!
-sleep 5
-kill $PID
-sudo apt-get install jq
-cat /home/$(id -nu)/.config/transmission/settings.json | jq '.["download-dir"]="/home/$(id -nu)/Documents/SharedFolder"' > /home/$(id -nu)/.config/transmission/settings_copy.json
-rm /home/$(id -nu)/.config/transmission/settings.json
-mv /home/$(id -nu)/.config/transmission/settings_copy.json /home/$(id -nu)/.config/transmission/settings.json 
-
 echo "install R and Rstudio"
 echo "deb http://cran.mirror.ac.za/bin/linux/ubuntu trusty/" | sudo tee -a /etc/apt/sources.list
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
@@ -82,5 +72,15 @@ wget https://download1.rstudio.org/rstudio-0.99.902-amd64.deb
 sudo dpkg -i *.deb
 sudo apt-get -f install
 rm *.deb 
+
+echo "update transmission torrent client download path"
+transmission-gtk &
+PID=$!
+sleep 5
+kill $PID
+sudo apt-get install jq
+cat /home/$(id -nu)/.config/transmission/settings.json | jq '.["download-dir"]="/home/$(id -nu)/Documents/SharedFolder"' > /home/$(id -nu)/.config/transmission/settings_copy.json
+rm /home/$(id -nu)/.config/transmission/settings.json
+mv /home/$(id -nu)/.config/transmission/settings_copy.json /home/$(id -nu)/.config/transmission/settings.json 
 
 /opt/serviio/bin/serviio-console.sh 
