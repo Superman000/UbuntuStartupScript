@@ -60,9 +60,13 @@ echo "install teamviewer"
 sudo wget https://download.teamviewer.com/download/teamviewer_i386.deb
 sudo dpkg -i *.deb
 sudo apt-get -f install
+rm *.deb 
 
 echo "update transmission torrent client download path"
-transmission-gtk
+transmission-gtk &
+PID=$!
+sleep 5
+kill $PID
 cat /home/ruan/.config/transmission/settings.json | jq '.["watch-dir"]="/home/ruan/Documents/SharedFolder"' > /home/ruan/.config/transmission/settings_copy.json
 rm /home/ruan/.config/transmission/settings.json
 mv /home/ruan/.config/transmission/settings_copy.json /home/ruan/.config/transmission/settings.json 
@@ -76,4 +80,5 @@ sudo apt-get upgrade
 sudo apt-get install r-base
 wget https://download1.rstudio.org/rstudio-0.99.902-amd64.deb
 sudo dpkg -i *.deb
+sudo apt-get -f install
 rm *.deb 
