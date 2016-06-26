@@ -85,4 +85,7 @@ cat /home/$(id -nu)/.config/transmission/settings.json | jq '.["download-dir"]="
 rm /home/$(id -nu)/.config/transmission/settings.json
 mv /home/$(id -nu)/.config/transmission/settings_copy.json /home/$(id -nu)/.config/transmission/settings.json 
 
+echo "customise launcher"
+gsettings set com.canonical.Unity.Launcher favorites "['nautilus-home.desktop', 'chromium-browser.desktop', 'gnome-system-monitor.desktop', 'vlc.desktop']"
+
 /opt/serviio/bin/serviio-console.sh 
