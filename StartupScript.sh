@@ -66,7 +66,8 @@ transmission-gtk &
 PID=$!
 sleep 5
 kill $PID
-cat /home/$(id -nu)/.config/transmission/settings.json | jq '.["watch-dir"]="/home/$(whoami)/Documents/SharedFolder"' > /home/$(id -nu)/.config/transmission/settings_copy.json
+sudo apt-get install jq
+cat /home/$(id -nu)/.config/transmission/settings.json | jq '.["download-dir"]="/home/$(id -nu)/Documents/SharedFolder"' > /home/$(id -nu)/.config/transmission/settings_copy.json
 rm /home/$(id -nu)/.config/transmission/settings.json
 mv /home/$(id -nu)/.config/transmission/settings_copy.json /home/$(id -nu)/.config/transmission/settings.json 
 
