@@ -28,7 +28,7 @@ sudo useradd -r -s /bin/false serviio
 mkdir -p /opt
 cd /opt
 sudo wget http://download.serviio.org/releases/serviio-1.5.2-linux.tar.gz
-tar zxvf serviio-1.5.2-linux.tar.gz
+sudo tar zxvf serviio-1.5.2-linux.tar.gz
 sudo rm serviio-1.5.2-linux.tar.gz
 sudo ln -s serviio-1.5.2 serviio
 sudo chown -R root:root serviio-1.5.2
