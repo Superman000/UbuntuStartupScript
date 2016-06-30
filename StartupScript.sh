@@ -94,6 +94,18 @@ cat /home/$(id -nu)/.config/transmission/settings.json | jq '.["download-dir"]="
 rm /home/$(id -nu)/.config/transmission/settings.json
 mv /home/$(id -nu)/.config/transmission/settings_copy.json /home/$(id -nu)/.config/transmission/settings.json 
 
+echo "install wireless hacking tools"
+wget https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/reaver-wps/reaver-1.4.tar.gz
+tar xvfz reaver-1.4.tar.gz
+sudo apt-get install libpcap-dev
+sudo apt-get install libsqlite3-dev
+cd reaver-1.4/src
+./configure
+make
+sudo make install
+cd
+sudo apt-get install aircrack-ng
+
 echo "customise launcher"
 gsettings set com.canonical.Unity.Launcher favorites "['application://org.gnome.Nautilus.desktop', 'application://libreoffice-writer.desktop', 'application://libreoffice-calc.desktop', 'application://libreoffice-impress.desktop', 'application://org.gnome.Software.desktop', 'application://rstudio.desktop', 'application://gnome-terminal.desktop', 'unity://running-apps', 'application://google-chrome.desktop', 'unity://expo-icon', 'unity://devices']"
 
