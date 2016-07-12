@@ -5,10 +5,15 @@ echo "deb http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee -a /etc
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 sudo apt-get update
 sudo apt-get install google-chrome-stable 
+
+echo "remove firefox"
 sudo apt-get purge firefox
 
 echo "install vlc"
 sudo apt-get install vlc
+
+echo "remove totem video player"
+sudo apt-get purge totem
 
 echo "install notepadqq"
 sudo add-apt-repository ppa:notepadqq-team/notepadqq
@@ -105,8 +110,23 @@ make
 sudo make install
 cd
 sudo apt-get install aircrack-ng
+rm reaver-1.4.tar.gz
+
+echo "install eric"
+sudo apt-get install eric
+
+echo "install sci-kit learn"
+sudo apt-get install build-essential python3-dev python3-setuptools
+sudo apt-get install python3-numpy python3-scipy
+sudo apt-get install libatlas-dev libatlas3gf-base
+sudo update-alternatives --set libblas.so.3 \
+    /usr/lib/atlas-base/atlas/libblas.so.3
+sudo update-alternatives --set liblapack.so.3 \
+    /usr/lib/atlas-base/atlas/liblapack.so.3
+sudo apt-get install python-matplotlib
 
 echo "customise launcher"
 gsettings set com.canonical.Unity.Launcher favorites "['application://org.gnome.Nautilus.desktop', 'application://libreoffice-writer.desktop', 'application://libreoffice-calc.desktop', 'application://libreoffice-impress.desktop', 'application://org.gnome.Software.desktop', 'application://rstudio.desktop', 'application://gnome-terminal.desktop', 'unity://running-apps', 'application://google-chrome.desktop', 'unity://expo-icon', 'unity://devices']"
 
+echo "run serviio management console"
 /opt/serviio/bin/serviio-console.sh 
